@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Java中instanceof关键字的理解java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。 用法：result = object instanceof class参数：Result：布尔类型。Object：必选项。任意对象表达式。Class：必选项。任意已定义的对">
+  <meta name="description" content="重写 参数列表必须完全与被重写方法的相同； 返回类型必须完全与被重写方法的返回类型相同； 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。 父类的成员方法只能被它的子类重写。 声明为final的方法不能被重写。 声明为static的方法不能被重写，但是能够被再次声明。 子类和父类在同一个包中，那么子">
 <meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="instanceof">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/instanceof/index.html">
+<meta property="og:title" content="重写重载">
+<meta property="og:url" content="http://yoursite.com/2019/04/19/重写重载/index.html">
 <meta property="og:site_name" content="无名神社">
-<meta property="og:description" content="Java中instanceof关键字的理解java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。 用法：result = object instanceof class参数：Result：布尔类型。Object：必选项。任意对象表达式。Class：必选项。任意已定义的对">
+<meta property="og:description" content="重写 参数列表必须完全与被重写方法的相同； 返回类型必须完全与被重写方法的返回类型相同； 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。 父类的成员方法只能被它的子类重写。 声明为final的方法不能被重写。 声明为static的方法不能被重写，但是能够被再次声明。 子类和父类在同一个包中，那么子">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-01T15:45:06.740Z">
+<meta property="og:updated_time" content="2019-04-18T16:30:31.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="instanceof">
-<meta name="twitter:description" content="Java中instanceof关键字的理解java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。 用法：result = object instanceof class参数：Result：布尔类型。Object：必选项。任意对象表达式。Class：必选项。任意已定义的对">
+<meta name="twitter:title" content="重写重载">
+<meta name="twitter:description" content="重写 参数列表必须完全与被重写方法的相同； 返回类型必须完全与被重写方法的返回类型相同； 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。 父类的成员方法只能被它的子类重写。 声明为final的方法不能被重写。 声明为static的方法不能被重写，但是能够被再次声明。 子类和父类在同一个包中，那么子">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/01/instanceof/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/19/重写重载/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>instanceof | 无名神社</title>
+  <title>重写重载 | 无名神社</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/instanceof/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/重写重载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="T_LS">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">instanceof
+          <h1 class="post-title" itemprop="name headline">重写重载
 
               
             
@@ -353,7 +353,7 @@
                 
               
 
-              <time title="创建时间：2019-04-01 23:43:58 / 修改时间：23:45:06" itemprop="dateCreated datePublished" datetime="2019-04-01T23:43:58+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-19 00:28:42 / 修改时间：00:30:31" itemprop="dateCreated datePublished" datetime="2019-04-19T00:28:42+08:00">2019-04-19</time>
             
 
             
@@ -392,11 +392,63 @@
       
 
       
-        <h1 id="Java中instanceof关键字的理解"><a href="#Java中instanceof关键字的理解" class="headerlink" title="Java中instanceof关键字的理解"></a>Java中instanceof关键字的理解</h1><p>java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。</p>
-<p>用法：<br>result = object instanceof class<br>参数：<br>Result：布尔类型。<br>Object：必选项。任意对象表达式。<br>Class：必选项。任意已定义的对象类。<br>说明：<br>如果 object 是 class 的一个实例，则 instanceof 运算符返回 true。如果 object 不是指定类的一个实例，或者 object 是 null，则返回 false。</p>
-<p>但是instanceof在Java的编译状态和运行状态是有区别的：</p>
-<p>在编译状态中，class可以是object对象的父类，自身类，子类。在这三种情况下Java编译时不会报错。</p>
-<p>在运行转态中，class可以是object对象的父类，自身类，不能是子类。在前两种情况下result的结果为true，最后一种为false。但是class为子类时编译不会报错。运行结果为false。</p>
+        <h1 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h1><ul>
+<li>参数列表必须完全与被重写方法的相同；</li>
+<li>返回类型必须完全与被重写方法的返回类型相同；</li>
+<li>访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。</li>
+<li>父类的成员方法只能被它的子类重写。</li>
+<li>声明为final的方法不能被重写。</li>
+<li>声明为static的方法不能被重写，但是能够被再次声明。</li>
+<li>子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。</li>
+<li>子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。</li>
+<li>重写的方法能够抛出任何非强制异常，无论被重写的方法是否抛出异常。但是，重写的方法不能抛出新的强制性异常，或者比被重写方法声明的更广泛的强制性异常，反之则可以。</li>
+<li>构造方法不能被重写。</li>
+<li>如果不能继承一个方法，则不能重写这个方法</li>
+</ul>
+<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。</p>
+<p>每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。</p>
+<p>最常用的地方就是构造器的重载。</p>
+<p><strong>重载规则:</strong></p>
+<ul>
+<li>被重载的方法必须改变参数列表(参数个数或类型不一样)；</li>
+<li>被重载的方法可以改变返回类型；</li>
+<li>被重载的方法可以改变访问修饰符；</li>
+<li>被重载的方法可以声明新的或更广的检查异常；</li>
+<li>方法能够在同一个类中或者在一个子类中被重载。</li>
+<li>无法以返回值类型作为重载函数的区分标准。</li>
+</ul>
+<hr>
+<h2 id="重写与重载之间的区别"><a href="#重写与重载之间的区别" class="headerlink" title="重写与重载之间的区别"></a>重写与重载之间的区别</h2><table>
+<thead>
+<tr>
+<th>区别点</th>
+<th>重载方法</th>
+<th>重写方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数列表</td>
+<td>必须修改</td>
+<td>一定不能修改</td>
+</tr>
+<tr>
+<td>返回类型</td>
+<td>可以修改</td>
+<td>一定不能修改</td>
+</tr>
+<tr>
+<td>异常</td>
+<td>可以修改</td>
+<td>可以减少或删除，一定不能抛出新的或者更广的异常</td>
+</tr>
+<tr>
+<td>访问</td>
+<td>可以修改</td>
+<td>一定不能做更严格的限制（可以降低限制）</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -433,14 +485,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/19/继承/" rel="next" title="继承">
+                <i class="fa fa-chevron-left"></i> 继承
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/01/JAVA入门/" rel="prev" title="JAVA入门">
-                JAVA入门 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/19/抽象/" rel="prev" title="抽象">
+                抽象 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中instanceof关键字的理解"><span class="nav-number">1.</span> <span class="nav-text">Java中instanceof关键字的理解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重写"><span class="nav-number">1.</span> <span class="nav-text">重写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载"><span class="nav-number">2.</span> <span class="nav-text">重载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重写与重载之间的区别"><span class="nav-number">2.1.</span> <span class="nav-text">重写与重载之间的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
