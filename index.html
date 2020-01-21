@@ -219,6 +219,8 @@
     
 
     
+      
+    
 
     <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
@@ -236,8 +238,10 @@
     
 
     
+      
+    
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
 
   </li>
         
@@ -253,8 +257,10 @@
     
 
     
+      
+    
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
 
   </li>
 
@@ -351,12 +357,24 @@
                 
               
 
-              <time title="创建时间：2020-01-13 00:47:16 / 修改时间：14:17:25" itemprop="dateCreated datePublished" datetime="2020-01-13T00:47:16+08:00">2020-01-13</time>
+              <time title="创建时间：2020-01-13 00:47:16" itemprop="dateCreated datePublished" datetime="2020-01-13T00:47:16+08:00">2020-01-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 16:11:56" itemprop="dateModified" datetime="2020-01-21T16:11:56+08:00">2020-01-21</time>
               
             
           </span>
@@ -365,6 +383,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2020/01/13/Unity学习（1）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2020/01/13/Unity学习（1）/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -391,75 +422,18 @@
 
       
         
-          
-            <h1 id="Unity学习（1）3D俯视角游戏"><a href="#Unity学习（1）3D俯视角游戏" class="headerlink" title="Unity学习（1）3D俯视角游戏"></a>Unity学习（1）3D俯视角游戏</h1><p>工程基于Unity learn的教程John Lemon’s Haunted Jaunt: 3D Beginner</p>
+          <p>工程基于Unity learn的教程John Lemon’s Haunted Jaunt: 3D Beginner</p>
 <p> <a href="https://learn.unity.com/project/john-lemon-s-haunted-jaunt-3d-beginner?language=en" target="_blank" rel="noopener">https://learn.unity.com/project/john-lemon-s-haunted-jaunt-3d-beginner?language=en</a> </p>
 <p>文章用于自己对学习内容进行梳理</p>
-<h2 id="Prefabs（预设）"><a href="#Prefabs（预设）" class="headerlink" title="Prefabs（预设）"></a>Prefabs（预设）</h2><p> <img src="/blog/2020/01/13/Unity学习（1）/image-20200112220219062.png" alt></p>
-<p>类似于创建模板，双击可以打开预设编辑页面，页面里更改的会应用于所有的由该预设创建出的对象，但需要注意的是，如果在Hierarchy目录里为单个对象添加<strong>组件</strong>的话，并不会改变预设内的值，但可以用overrides来将修改运用于预设</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112220808719.png" alt></p>
-<p>目录里的对象如果对应有预设的话会蓝色显示</p>
-<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><p>本工程中角色包含三个要素：动画，模型，脚本</p>
-<h4 id="动画："><a href="#动画：" class="headerlink" title="动画："></a>动画：</h4><p>Unity中利用一个Animators的对象来控制角色在不同的动画中切换</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112221227296.png" alt></p>
-<p>Entry为起始点，箭头指向的动画Idle为静止动画，人物不动的时候播放该动画，当人物移动时，需要切换为移动动画，白色的双向箭头中可以添加切换的条件</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112221554204.png" alt></p>
-<p>其中的Has Exit Time一般取消选择，意思为会在确定的时间进入下一状态，当前情况下是需要判断IsWalking是否为true来进入下一状态</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112221844706.png" alt="image-20200112221844706"></p>
-<p>需要在角色对象里添加Animator组件将以上部分添加，这样在该角色的脚本里才能通过获取组件的方式获取到Animator里的IsWalking这个变量并修改</p>
-<p>关于animator的update mode</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20191125111911991.png" alt="image-20191125111911991"></p>
-<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><p>角色的移动交互需要靠Script实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class PlayerMovement : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float turnSpeed = 20f;</span><br><span class="line">    Animator m_Animator;</span><br><span class="line">    Vector3 m_Movement;</span><br><span class="line">    Quaternion m_Rotation = Quaternion.identity;</span><br><span class="line">    Rigidbody m_Rigidbody;</span><br><span class="line"></span><br><span class="line">    AudioSource m_AudioSource;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        m_Animator = GetComponent&lt;Animator&gt;();</span><br><span class="line">        m_Rigidbody = GetComponent&lt;Rigidbody&gt;();  </span><br><span class="line">        //GetComponent is a method of MonoBehaviour</span><br><span class="line">        m_AudioSource = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);  //确定虚拟轴的值</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        m_Movement.Set(horizontal, 0f, vertical);</span><br><span class="line">        m_Movement.Normalize(); </span><br><span class="line"></span><br><span class="line">        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);</span><br><span class="line">        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);</span><br><span class="line">        bool isWalking = hasHorizontalInput || hasVerticalInput;</span><br><span class="line"></span><br><span class="line">        m_Animator.SetBool(&quot;IsWalking&quot;, isWalking);</span><br><span class="line">        if (isWalking)</span><br><span class="line">        &#123;</span><br><span class="line">            if (!m_AudioSource.isPlaying)</span><br><span class="line">            &#123;</span><br><span class="line">                m_AudioSource.Play();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            m_AudioSource.Stop();</span><br><span class="line">        &#125;</span><br><span class="line">        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);</span><br><span class="line"></span><br><span class="line">        /*RotateTowards 有四个参数，前两个为转动角度的起始和终点，第三个为旋转的角度变化，第四个为旋转的幅度变化</span><br><span class="line">        */</span><br><span class="line">        m_Rotation = Quaternion.LookRotation(desiredForward);</span><br><span class="line">    &#125;</span><br><span class="line">    void OnAnimatorMove()</span><br><span class="line">    &#123;</span><br><span class="line">        m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);</span><br><span class="line">        m_Rigidbody.MoveRotation(m_Rotation);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是控制角色移动的脚本，需要注意的点有</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20191125120049740.png" alt="image-20191125120049740"></p>
-<p>物体运动的时候斜向的运动速度会快于水平的移动速度，normalizing可以将向量的最大值统一为1</p>
-<p>在控制角色移动时，有如下两行代码</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20191127144008063.png" alt="image-20191127144008063"></p>
-<p>官网上给出的API解释为</p>
-<blockquote>
-<p>Returns the value of the virtual axis identified by <code>axisName</code>.</p>
-<p>The value will be in the range -1…1 for keyboard and joystick input. If the axis is setup to be delta mouse movement, the mouse delta is multiplied by the axis sensitivity and the range is not -1…1.</p>
-<p>This is frame-rate independent; you do not need to be concerned about varying frame-rates when using this value.s</p>
-</blockquote>
-<p>edit-project setting里可以设置</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20191127144239613.png" alt="image-20191127144239613"></p>
-<p>控制台输出的log如下</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20191127150818786.png" alt="image-20191127150818786"></p>
-<p>我理解为，horizontal和vertical会在指定的输入按键（这里是wasd）下，在-1到1之间变化其值，表示其在某方向下的增量，然后再将这个值传给rigidbody.position就可以控制人物在场景里的坐标变化</p>
-<h2 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a>Camera</h2><p>unity里可以使用一个相机管理工具Cinemachine来控制镜头，甚至可以用来做电影和动画，如同AI相机操作员帮你控制镜头</p>
-<p>本工程里的应用为在角色斜后方创建一个镜头跟着角色，这样可以实现俯视角游戏里以角色为屏幕中心的效果</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112223220578.png" alt="image-20200112223220578"></p>
-<p>参数里的Follow可以设定为需要跟的人物</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112223257172.png" alt="image-20200112223257172"></p>
-<p>其工作原理为根据对象的位置和角色中心点的位置差来将镜头移动，下面是相机的视觉图</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112223411088.png" alt="image-20200112223411088"></p>
-<p>game视窗里红色区域表示绑定的object绝对不会到达的区域，屏幕中心的点会一直追着obj将其位于中心</p>
-<h2 id="Post-Process"><a href="#Post-Process" class="headerlink" title="Post Process"></a>Post Process</h2><p>可以理解为在渲染完成后于屏幕上增加效果，类似于滤镜一样的，其有一个组件为作用体积</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112223646035.png" alt="image-20200112223646035"></p>
-<p>勾选了Is Global后整个Scene里的镜头都会加上这个Post里的效果，有几个常用的effect</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200111192725851.png" alt="image-20200111192725851"></p>
-<p>这个特效可以调整镜头阴影</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200111192758638.png" alt="image-20200111192758638"></p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112223907964.png" alt="image-20200112223907964"></p>
-<p>这个可以调整场景里的一些光照效果</p>
-<h2 id="敌人"><a href="#敌人" class="headerlink" title="敌人"></a>敌人</h2><p>本工程里设置了两种敌人，分别为静态和动态</p>
-<h4 id="静态敌人"><a href="#静态敌人" class="headerlink" title="静态敌人"></a>静态敌人</h4><p>敌人加上一个有Collider组件的子对象可以用来表示判定范围</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112224259396.png" alt="image-20200112224259396"></p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112224332120.png" alt="image-20200112224332120"></p>
-<p>当敌人位于判断范围内时进行某些行动，但如果玩家和敌人中间有障碍物，例如一堵墙的时候，敌人实际上是没有看见玩家的，判断方式为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if (m_IsPlayerInRange)</span><br><span class="line">&#123;</span><br><span class="line">    Vector3 direction = player.position - transform.position + Vector3.up;</span><br><span class="line">    Ray ray = new Ray(transform.position, direction);</span><br><span class="line">    RaycastHit raycastHit;</span><br><span class="line">    if (Physics.Raycast(ray, out raycastHit))</span><br><span class="line">    &#123;</span><br><span class="line">        if (raycastHit.collider.transform == player)</span><br><span class="line">        &#123;</span><br><span class="line">            gameEnding.CaughtPlayer();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Unity提供一个Ray类，作用可以理解发出一道光线，然后判断光线击中的对象是否为设定的对象</p>
-<h4 id="动态敌人"><a href="#动态敌人" class="headerlink" title="动态敌人"></a>动态敌人</h4><p>动态的敌人需要解决的问题为如何移动，本次用到的是另动态敌人在固定点之间巡逻，Unity提供了一个名为NavMesh的寻路网格，它用一个区域表示对象可以到达范围，设定参数后烘培效果如图</p>
-<p><strong>生成网格前需要先把对象变为静态</strong></p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112225110592.png" alt="image-20200112225110592"></p>
-<p>Unity有自己的寻路算法，给对象添加寻路代理组件后可以通过调用该组件的方法来设定目的地</p>
-<p><img src="/blog/2020/01/13/Unity学习（1）/image-20200112225310678.png" alt="image-20200112225310678"></p>
-<p>waypoint需要定义为对象并调整它的位置，故寻路可以寻路至某个对象，例如敌人朝玩家靠近的实现。下面的脚本内容为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class WaypointPatrol : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public NavMeshAgent navMeshAgent;</span><br><span class="line">    public Transform[] waypoints;</span><br><span class="line">    int m_CurrentWaypointIndex;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        navMeshAgent.SetDestination(waypoints[0].position);</span><br><span class="line">        //调用组件的方法设立目的地</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        //判断是否到达目的地，如果到达则将目的地改为数组的下一个</span><br><span class="line">        if (navMeshAgent.remainingDistance &lt; navMeshAgent.stoppingDistance)</span><br><span class="line">        &#123;</span><br><span class="line">            m_CurrentWaypointIndex=(m_CurrentWaypointIndex+1)%waypoints.Length;</span><br><span class="line">        &#125;</span><br><span class="line">        navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>all.</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2020/01/13/Unity学习（1）/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -573,6 +547,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/19/抽象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/19/抽象/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -737,6 +724,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/19/重写重载/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/19/重写重载/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -922,12 +922,24 @@
                 
               
 
-              <time title="创建时间：2019-04-19 00:23:10 / 修改时间：00:27:47" itemprop="dateCreated datePublished" datetime="2019-04-19T00:23:10+08:00">2019-04-19</time>
+              <time title="创建时间：2019-04-19 00:23:10" itemprop="dateCreated datePublished" datetime="2019-04-19T00:23:10+08:00">2019-04-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 15:53:09" itemprop="dateModified" datetime="2020-01-21T15:53:09+08:00">2020-01-21</time>
               
             
           </span>
@@ -936,6 +948,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/19/继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/19/继承/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -962,8 +987,7 @@
 
       
         
-          
-            <h1 id="super-关键字"><a href="#super-关键字" class="headerlink" title=".super 关键字"></a>.super 关键字</h1><p>super 表示使用它的类的父类。super 可用于：</p>
+          <h1 id="super-关键字"><a href="#super-关键字" class="headerlink" title=".super 关键字"></a>.super 关键字</h1><p>super 表示使用它的类的父类。super 可用于：</p>
 <ul>
 <li>调用父类的构造方法；</li>
 <li>调用父类的方法（子类覆盖了父类的方法时）；</li>
@@ -972,95 +996,15 @@
 <p>调用父类的构造方法语法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>();  </span><br><span class="line"></span><br><span class="line">或   </span><br><span class="line"></span><br><span class="line"><span class="keyword">super</span>(参数列表);</span><br></pre></td></tr></table></figure>
 <p>注意：super 语句必须是子类构造方法的第一条语句。不能在子类中使用父类构造方法名来调用父类构造方法。 父类的构造方法不被子类继承。调用父类的构造方法的唯一途径是使用 super 关键字，如果子类中没显式调用，则编译器自动将 super(); 作为子类构造方法的第一条语句。这会形成一个构造方法链。</p>
-<p>静态方法中不能使用 super 关键字。</p>
-<p>调用父类的方法语法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.方法名(参数列表);</span><br></pre></td></tr></table></figure>
-<p>如果是继承的方法，是没有必要使用 super 来调用，直接即可调用。但如果子类覆盖或重写了父类的方法，则只有使用 super 才能在子类中调用父类中的被重写的方法。</p>
-<h1 id="this-关键字"><a href="#this-关键字" class="headerlink" title=".this 关键字"></a>.this 关键字</h1><p>this 关键字表示当前对象。可用于：</p>
-<ul>
-<li>调用当前类的构造方法，并且必须是方法的第一条语句。如：this(); 调用默认构造方法。this(参数); 调用带参构造方法。</li>
-<li>限定当前对象的数据域变量。一般用于方法内的局部变量与对象的数据域变量同名的情况。如 this.num = num。this.num 表示当前对象的数据域变量 num，而 num 表示方法中的局部变量。</li>
-</ul>
-<hr>
-<h1 id="final-的作用随着所修饰的类型而不同"><a href="#final-的作用随着所修饰的类型而不同" class="headerlink" title=".final 的作用随着所修饰的类型而不同"></a>.final 的作用随着所修饰的类型而不同</h1><p>1、final 修饰类中的属性或者变量</p>
-<p>无论属性是基本类型还是引用类型，final 所起的作用都是变量里面存放的”值”不能变。</p>
-<p>这个值，对于基本类型来说，变量里面放的就是实实在在的值，如 1，”abc” 等。</p>
-<p>而引用类型变量里面放的是个地址，所以用 final 修饰引用类型变量指的是它里面的地址不能变，并不是说这个地址所指向的对象或数组的内容不可以变，这个一定要注意。</p>
-<p>例如：类中有一个属性是 <strong>final Person p=new Person(“name”);</strong> 那么你不能对 p 进行重新赋值，但是可以改变 p 里面属性的值 <strong>p.setName(‘newName’);</strong></p>
-<p>final 修饰属性，声明变量时可以不赋值，而且一旦赋值就不能被修改了。对 final 属性可以在三个地方赋值：声明时、初始化块中、构造方法中，总之一定要赋值。</p>
-<p>2、final修饰类中的方法</p>
-<p>作用：可以被继承，但继承后不能被重写。</p>
-<p>3、final修饰类</p>
-<p>作用：类不可以被继承。</p>
-<hr>
-<h1 id="java文件被编译成class文件时，在子类的所有构造函数中的第一行（第一个语句）会默认自动添加-super-语句，在执行子类的构造函数前，总是会先执行父类中的构造函数。"><a href="#java文件被编译成class文件时，在子类的所有构造函数中的第一行（第一个语句）会默认自动添加-super-语句，在执行子类的构造函数前，总是会先执行父类中的构造函数。" class="headerlink" title=".java文件被编译成class文件时，在子类的所有构造函数中的第一行（第一个语句）会默认自动添加 super() 语句，在执行子类的构造函数前，总是会先执行父类中的构造函数。"></a>.java文件被编译成class文件时，在子类的所有构造函数中的第一行（第一个语句）会默认自动添加 super() 语句，在执行子类的构造函数前，总是会先执行父类中的构造函数。</h1><p><strong>在编写代码要注意：</strong></p>
-<ul>
-<li>1.如果父类中不含 默认构造函数（就是 类名() ），那么子类中的super()语句就会执行失败，系统就会报错。一般 默认构造函数 编译时会自动添加，但如果类中已经有一个构造函数时，就不会添加。</li>
-<li>2.执行父类构造函数的语句只能放在函数内语句的首句，不然会报错。</li>
-</ul>
-<p>在继承关系中，在调用函数（方法）或者类中的成员变量时，JVM（JAVA虚拟机）会先检测当前的类（也就是子类）是否含有该函数或者成员变量，如果有，就执行子类中的，如果没有才会执行父类中的。如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Start</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Cat cat=<span class="keyword">new</span> Cat(<span class="string">"Jack"</span>,<span class="string">"黑色"</span>);</span><br><span class="line">        cat.eat();</span><br><span class="line">        cat.run();</span><br><span class="line">        cat.sleep();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//必须要写这个构造函数，不然Cat类的代码会出错</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在奔跑"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在睡觉"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">(String name,String color)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.color=color;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(color+<span class="string">"的"</span>+name+<span class="string">"正在吃鱼"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">黑色的Jack正在吃鱼</span><br><span class="line">Jack正在奔跑</span><br><span class="line">Jack正在睡觉</span><br></pre></td></tr></table></figure>
-<p>当子类出现与父类一样的函数时，这个被称为 <strong>重写</strong> 也叫 <strong>覆盖</strong></p>
-<hr>
-<h1 id="Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递"><a href="#Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递" class="headerlink" title=".Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递"></a>.Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递</h1><p>如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Start</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b=<span class="keyword">new</span> B();</span><br><span class="line">        C c=<span class="keyword">new</span> C();</span><br><span class="line">        D d=<span class="keyword">new</span> D();</span><br><span class="line">        speak(a);</span><br><span class="line">        speak(b);</span><br><span class="line">        speak(c);</span><br><span class="line">        speak(d);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// instanceof 关键字是用于比较类与类是否相同，相同返回true，不同返回false</span></span><br><span class="line"><span class="comment">//当你不清楚你需要的参数是什么类型的，可以用Object来代替，Object可以代替任何类</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> A)<span class="comment">//意思是：如果参数是 A 类，那么就执行一下语句</span></span><br><span class="line">        &#123;</span><br><span class="line">            A aobj=(A)obj;<span class="comment">//这里是向下转换，需要强制转换</span></span><br><span class="line">            aobj.axx();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> B)</span><br><span class="line">        &#123;</span><br><span class="line">            B bobj=(B)obj;</span><br><span class="line">            bobj.bxx();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> C)</span><br><span class="line">        &#123;</span><br><span class="line">            C cobj=(C)obj;</span><br><span class="line">            cobj.cxx();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里举了四个类，他们的函数都不同，但都是 Object 类的子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">axx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Good morning!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bxx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Holle!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is B"</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cxx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Look!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is C"</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dxx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Oh!Bad!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is D"</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Good morning!</span><br><span class="line">This is A</span><br><span class="line">Holle!</span><br><span class="line">This is B</span><br><span class="line">Look!</span><br><span class="line">This is C</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="Java-转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。"><a href="#Java-转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。" class="headerlink" title=".Java 转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。"></a>.Java 转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。</h1><p>什么叫父类引用指向子类对象，且听我慢慢道来。</p>
-<p>从 2 个名词开始说起<strong>：向上转型(upcasting)</strong> 、<strong>向下转型(downcasting)</strong>。</p>
-<p>举个例子：有2个类，Father 是父类，Son 类继承自 Father。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Father f1 = <span class="keyword">new</span> Son();   <span class="comment">// 这就叫 upcasting （向上转型)</span></span><br><span class="line"><span class="comment">// 现在 f1 引用指向一个Son对象</span></span><br><span class="line"></span><br><span class="line">Son s1 = (Son)f1;   <span class="comment">// 这就叫 downcasting (向下转型)</span></span><br><span class="line"><span class="comment">// 现在f1 还是指向 Son对象</span></span><br></pre></td></tr></table></figure>
-<p><strong>第2个例子：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Father f2 = <span class="keyword">new</span> Father();</span><br><span class="line">Son s2 = (Son)f2;       <span class="comment">// 出错，子类引用不能指向父类对象</span></span><br></pre></td></tr></table></figure>
-<p>你或许会问，第1个例子中：Son s1 = (Son)f1; 问什是正确的呢。</p>
-<p>很简单因为 f1 指向一个子类对象，<strong>Father f1 = new Son();</strong> 子类 s1 引用当然可以指向子类对象了。</p>
-<p>而 f2 被传给了一个 Father 对象，<strong>Father f2 = new Father();</strong> 子类 s1 引用不能指向父类对象。</p>
-<p><strong>总结：</strong></p>
-<p>1、父类引用指向子类对象，而子类引用不能指向父类对象。</p>
-<p>2、把子类对象直接赋给父类引用叫upcasting向上转型，向上转型不用强制转换吗，如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Father f1 = <span class="keyword">new</span> Son();</span><br></pre></td></tr></table></figure>
-<p>3、把指向子类对象的父类引用赋给子类引用叫向下转型(downcasting)，要强制转换，如：</p>
-<p>f1 就是一个指向子类对象的父类引用。把f1赋给子类引用 s1 即 <strong>Son s1 = (Son)f1;</strong></p>
-<p>其中 f1 前面的(Son)必须加上，进行强制转换。</p>
-<hr>
-<h1 id="父类成员访问属性"><a href="#父类成员访问属性" class="headerlink" title=".父类成员访问属性"></a>.父类成员访问属性</h1><table>
-<thead>
-<tr>
-<th>父类成员访问属性</th>
-<th>在父类中的含义</th>
-<th style="text-align:center">在子类中的含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>public</td>
-<td>对所有人开放</td>
-<td style="text-align:center">对所有人开放</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>只有包内其它类、自己和子类可以访问</td>
-<td style="text-align:center">只有包内其它类、自己和子类可以访问</td>
-</tr>
-<tr>
-<td>缺省</td>
-<td>只有包内其它类可以访问</td>
-<td style="text-align:center">如果子类与父类在同一个包内：只有包内其它类可以访问，否则：相当于private，不能访问</td>
-</tr>
-<tr>
-<td>private</td>
-<td>只有自己可以访问</td>
-<td style="text-align:center">不能访问</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><img src="http://www.runoob.com/wp-content/uploads/2013/12/oopxxx.png" alt="img"></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2019/04/19/继承/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1160,12 +1104,24 @@
                 
               
 
-              <time title="创建时间：2019-04-19 00:20:23 / 修改时间：00:22:00" itemprop="dateCreated datePublished" datetime="2019-04-19T00:20:23+08:00">2019-04-19</time>
+              <time title="创建时间：2019-04-19 00:20:23" itemprop="dateCreated datePublished" datetime="2019-04-19T00:20:23+08:00">2019-04-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 15:53:21" itemprop="dateModified" datetime="2020-01-21T15:53:21+08:00">2020-01-21</time>
               
             
           </span>
@@ -1174,6 +1130,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/19/异常处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/19/异常处理/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1200,36 +1169,17 @@
 
       
         
-          
-            <p><img src="http://www.runoob.com/wp-content/uploads/2017/09/690102-20160728164909622-1770558953.png" alt="img"></p>
+          <p><img src="http://www.runoob.com/wp-content/uploads/2017/09/690102-20160728164909622-1770558953.png" alt="img"></p>
 <p>如图可以看出所有的异常跟错误都继承与Throwable类，也就是说所有的异常都是一个对象。</p>
-<p><strong>从大体来分异常为两块：</strong></p>
-<p>1、error—错误 ： 是指程序无法处理的错误，表示应用程序运行时出现的重大错误。例如jvm运行时出现的OutOfMemoryError以及Socket编程时出现的端口占用等程序无法处理的错误。</p>
-<p>2、Exception — 异常 ：异常可分为运行时异常跟编译异常</p>
-<ul>
-<li>1）<strong>运行时异常</strong>：即RuntimeException及其之类的异常。这类异常在代码编写的时候不会被编译器所检测出来，是可以不需要被捕获，但是程序员也可以根据需要进行捕获抛出。常见的RUNtimeException有：NullpointException（空指针异常），ClassCastException（类型转换异常），IndexOutOfBoundsException（数组越界异常）等。</li>
-<li>2）<strong>编译异常</strong>：RuntimeException以外的异常。这类异常在编译时编译器会提示需要捕获，如果不进行捕获则编译错误。常见编译异常有：IOException（流传输异常），SQLException（数据库操作异常）等。</li>
-</ul>
-<p>3、java处理异常的机制：抛出异常以及捕获异常 ，一个方法所能捕捉的异常，一定是Java代码在某处所抛出的异常。简单地说，异常总是先被抛出，后被捕捉的。</p>
-<p>4、throw跟throws的区别:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void test() throws Exception &#123;</span><br><span class="line">    throw new Exception();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从上面这一段代码可以明显的看出两者的区别。throws表示一个方法声明可能抛出一个异常，throw表示此处抛出一个已定义的异常（可以是自定义需继承Exception，也可以是java自己给出的异常类）。</p>
-<p>5、接下来看一下如何捕获异常：</p>
-<p>1）首先java对于异常捕获使用的是try—catch或try — catch — finally 代码块，程序会捕获try代码块里面的代码，若捕获到异常则进行catch代码块处理。若有finally则在catch处理后执行finally里面的代码。然而存在这样两个问题：</p>
-<p>a.看如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//待捕获代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>（Exception e）&#123;</span><br><span class="line">    System.out.println(<span class="string">"catch is begin"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ；</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">     System.out.println(<span class="string">"finally is begin"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在catch里面有一个return，那么finally会不会被执行呢？答案是肯定的，上面代码的执行结果为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span> is begin</span><br><span class="line"><span class="keyword">finally</span> is begin</span><br></pre></td></tr></table></figure>
-<p>也就是说会先执行catch里面的代码后执行finally里面的代码最后才return1 ；</p>
-<p>b.看如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">   <span class="comment">//待捕获代码    </span></span><br><span class="line">&#125;<span class="keyword">catch</span>（Exception e）&#123;</span><br><span class="line">    System.out.println(<span class="string">"catch is begin"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> ；</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">     System.out.println(<span class="string">"finally is begin"</span>);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">2</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在b代码中输出结果跟a是一样的，然而返回的是return 2 ； 原因很明显，就是执行了finally后已经return了，所以catch里面的return不会被执行到。也就是说finally永远都会在catch的return前被执行。（这个是面试经常问到的问题哦！）</p>
-<p>6、对于异常的捕获不应该觉得方便而将几个异常合成一个Exception进行捕获，比如有IO的异常跟SQL的异常，这样完全不同的两个异常应该分开处理！而且在catch里处理异常的时候不要简单的e.printStackTrace()，而是应该进行详细的处理。比如进行console打印详情或者进行日志记录。</p>
-<blockquote>
-<p><strong>注意</strong>：异常和错误的区别：异常能被程序本身可以处理，错误是无法处理。</p>
-</blockquote>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2019/04/19/异常处理/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1329,12 +1279,24 @@
                 
               
 
-              <time title="创建时间：2019-04-01 23:44:19 / 修改时间：23:45:40" itemprop="dateCreated datePublished" datetime="2019-04-01T23:44:19+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 23:44:19" itemprop="dateCreated datePublished" datetime="2019-04-01T23:44:19+08:00">2019-04-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 16:14:32" itemprop="dateModified" datetime="2020-01-21T16:14:32+08:00">2020-01-21</time>
               
             
           </span>
@@ -1343,6 +1305,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/01/JAVA入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/01/JAVA入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1369,45 +1344,20 @@
 
       
         
-          
-            <h2 id="对JAVA的初接触"><a href="#对JAVA的初接触" class="headerlink" title="对JAVA的初接触"></a>对JAVA的初接触</h2><p>先来Mark一些常用的学习网站，在网上逛了一圈不知道什么样的书籍适合初学者，就找了几个简单的网站开始自学，作为一个刚上大一的编程萌新，在完成课程的同时也要认真学鸭。</p>
+          <h2 id="对JAVA的初接触"><a href="#对JAVA的初接触" class="headerlink" title="对JAVA的初接触"></a>对JAVA的初接触</h2><p>先来Mark一些常用的学习网站，在网上逛了一圈不知道什么样的书籍适合初学者，就找了几个简单的网站开始自学，作为一个刚上大一的编程萌新，在完成课程的同时也要认真学鸭。</p>
 <p><a href="http://www.runoob.com/" target="_blank" rel="noopener">菜鸟教程</a> 有许多语言和工具的教程</p>
 <p><a href="http://how2j.cn/" target="_blank" rel="noopener">HOW2J的JAVA教程</a> 亮点是有学习路线图和一些项目练手</p>
 <p><a href="https://studio.dev.tencent.com/" target="_blank" rel="noopener">腾讯云开发平台</a> 可在线上完成编程，不需要自己配置环境</p>
 <p><a href="https://edu.aliyun.com/?spm=5176.11778021.1285150.1.1c9a2e33d0bQ3r" target="_blank" rel="noopener">阿里云大学</a> 结合视频学习效果会更棒</p>
-<h2 id="JAVA开发工具及环境"><a href="#JAVA开发工具及环境" class="headerlink" title="JAVA开发工具及环境"></a>JAVA开发工具及环境</h2><p>用的是大家推荐的Eclipse,使用时有JDK就可以直接运行程序，不需要配置jdk的环境变量。教程中配置的JAVA_HOME是为了向ANT<a href="一种基于JAVA的build工具">^ 1</a>,Maven[^2]之类的程序需要，配置PATH为了在控制台手动编译程序。在使用Eclipse可以先尝试下用系统控制台来执行java程序</p>
-<h2 id="JAVA的结构"><a href="#JAVA的结构" class="headerlink" title="JAVA的结构"></a>JAVA的结构</h2><p>JAVA是一门面向对象的语言，与大一课程学的C++里一开始的面向过程不同，每一个CLASS文件都表示了一个类，JAVA程序就是一系列对象的集合。一个CLASS文件里只能有一个的public类，可以有多个其他类，在主要的public中，需要有一个主方法入口</p>
-<p><strong>基本语法</strong></p>
-<ul>
-<li>大小写敏感，如hello和Hello的区别</li>
-<li>所有类名的首字母应该大写，如果类名由若干个单词组成则每个字母都应大写</li>
-<li>源文件名必须和类名相同。保存时应使用类名作为文件名保存</li>
-<li>所有JAVA程序由public static void main(String []args)方法开始执行</li>
-</ul>
-<p><strong>package及import语句</strong></p>
-<p>package主要用来对类和接口进行分类，类似C++中的namespace。完整的class文件中应至多包含一个package语句且必须放在源程序第一句</p>
-<p><code>package java.test;</code>把编译器生成的所有.class文件放到包java.test中去</p>
-<p>当在其他类想调用某个类的方法时，可以在package和类定义中间加一句</p>
-<p><code>import 包名.*;</code>这样会在你编译时向系统说明我想用这个包的内容，到后面比如你想用HelloWorld类中的Hello方法时，系统会判定成java.test.HelloWorld。</p>
-<p>有点类似C++的#include，但import只是告诉系统一个方向。</p>
-<h2 id="JAVA的对象"><a href="#JAVA的对象" class="headerlink" title="JAVA的对象"></a>JAVA的对象</h2><p>同C++，JAVA对象建立时也需要一个构造方法，没有的话就执行默认的构造方法，但只要声明了带参的构造方法，那就不会再生成默认的构造方法，如果有特殊需要还要额外指定一个无参的构造方法。</p>
-<h2 id="JAVA的数据类型"><a href="#JAVA的数据类型" class="headerlink" title="JAVA的数据类型"></a>JAVA的数据类型</h2><p><strong>注意：JAVA里使用long类型的数值要在数值后面加上L，否则将作为整形解析</strong></p>
-<hr>
-<h6 id="引用菜鸟教程的笔记"><a href="#引用菜鸟教程的笔记" class="headerlink" title="引用菜鸟教程的笔记"></a>引用菜鸟教程的笔记</h6><p>引用类型是一个对象类型，它的值是指向内存空间的引用，就是地址，所指向的内存中保存着变量所表示的一个值或一组值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">a = <span class="number">250</span>; <span class="comment">// 声明变量a的同时，系统给a分配了空间。</span></span><br></pre></td></tr></table></figure>
-<p>引用类型就不是了，只给变量分配了引用空间，数据空间没有分配，因为不知道数据是什么。</p>
-<p><strong>错误的例子：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyDate today;</span><br><span class="line">today.day = <span class="number">4</span>; <span class="comment">// 发生错误，因为today对象的数据空间未分配。</span></span><br></pre></td></tr></table></figure>
-<p>引用类型变量在声明后必须通过实例化开辟数据空间，才能对变量所指向的对象进行访问。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyDate today;          <span class="comment">//将变量分配一个保存引用的空间</span></span><br><span class="line">today = <span class="keyword">new</span> MyDate();     <span class="comment">// 这句话是2步，首先执行new MyDate（），给today变量开辟数据空间，然后再执行赋值操作</span></span><br></pre></td></tr></table></figure>
-<p><strong>引用变量赋值：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyDate a，b;       <span class="comment">// 在内存开辟两个引用空间</span></span><br><span class="line">a = <span class="keyword">new</span> MyDate();       <span class="comment">// 开辟MyDate对象的数据空间，并把该空间的首地址赋给a</span></span><br><span class="line">b = a;                   <span class="comment">// 将a存储空间中的地址写到b的存储空间中</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>数据类型的转换</strong>（待深入了解）</p>
-<p>每个简单的数据类型都可以转换成相应的包装类，然后使用包装类的构造函数，利用包装类的方法也可以实现不同数值类型的转换</p>
-<p>Boolean(boolean value)、Character(char value)、Integer(int value)、Long(long value)、Float(float value)、Double(double value)</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2019/04/01/JAVA入门/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1507,12 +1457,24 @@
                 
               
 
-              <time title="创建时间：2019-04-01 23:43:58 / 修改时间：23:45:06" itemprop="dateCreated datePublished" datetime="2019-04-01T23:43:58+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 23:43:58" itemprop="dateCreated datePublished" datetime="2019-04-01T23:43:58+08:00">2019-04-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 15:52:26" itemprop="dateModified" datetime="2020-01-21T15:52:26+08:00">2020-01-21</time>
               
             
           </span>
@@ -1521,6 +1483,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/01/instanceof/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/01/instanceof/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1685,12 +1660,14 @@
       
 
       
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="331" height="86" src="//music.163.com/outchain/player?type=2&id=535056564&auto=1&height=66"></iframe>
+
+      
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
           
         </div>
       
-
     </div>
   </aside>
   
@@ -1822,6 +1799,35 @@
 
   
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'IwhdDenLcTulwnHhx5ElC225-gzGzoHsz',
+    appKey: 'MQF88EnV2niYmvOGUjbELNuu',
+    placeholder: '但是，我拒绝~',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
 
 
 

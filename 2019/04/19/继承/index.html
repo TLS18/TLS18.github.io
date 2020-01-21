@@ -105,7 +105,7 @@
 <meta property="og:description" content=".super 关键字super 表示使用它的类的父类。super 可用于：  调用父类的构造方法； 调用父类的方法（子类覆盖了父类的方法时）； 访问父类的数据域（可以这样用但没有必要这样用）。  调用父类的构造方法语法： 12345super();  或   super(参数列表); 注意：super 语句必须是子类构造方法的第一条语句。不能在子类中使用父类构造方法名来调用父类构造方法。 父类的构">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2013/12/oopxxx.png">
-<meta property="og:updated_time" content="2019-04-18T16:27:47.833Z">
+<meta property="og:updated_time" content="2020-01-21T07:53:09.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="继承">
 <meta name="twitter:description" content=".super 关键字super 表示使用它的类的父类。super 可用于：  调用父类的构造方法； 调用父类的方法（子类覆盖了父类的方法时）； 访问父类的数据域（可以这样用但没有必要这样用）。  调用父类的构造方法语法： 12345super();  或   super(参数列表); 注意：super 语句必须是子类构造方法的第一条语句。不能在子类中使用父类构造方法名来调用父类构造方法。 父类的构">
@@ -225,6 +225,8 @@
     
 
     
+      
+    
 
     <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
@@ -242,8 +244,10 @@
     
 
     
+      
+    
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
 
   </li>
         
@@ -259,8 +263,10 @@
     
 
     
+      
+    
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
 
   </li>
 
@@ -355,12 +361,24 @@
                 
               
 
-              <time title="创建时间：2019-04-19 00:23:10 / 修改时间：00:27:47" itemprop="dateCreated datePublished" datetime="2019-04-19T00:23:10+08:00">2019-04-19</time>
+              <time title="创建时间：2019-04-19 00:23:10" itemprop="dateCreated datePublished" datetime="2019-04-19T00:23:10+08:00">2019-04-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 15:53:09" itemprop="dateModified" datetime="2020-01-21T15:53:09+08:00">2020-01-21</time>
               
             
           </span>
@@ -369,6 +387,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/19/继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/19/继承/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -403,6 +434,7 @@
 <p>调用父类的构造方法语法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>();  </span><br><span class="line"></span><br><span class="line">或   </span><br><span class="line"></span><br><span class="line"><span class="keyword">super</span>(参数列表);</span><br></pre></td></tr></table></figure>
 <p>注意：super 语句必须是子类构造方法的第一条语句。不能在子类中使用父类构造方法名来调用父类构造方法。 父类的构造方法不被子类继承。调用父类的构造方法的唯一途径是使用 super 关键字，如果子类中没显式调用，则编译器自动将 super(); 作为子类构造方法的第一条语句。这会形成一个构造方法链。</p>
+ <a id="more"></a> 
 <p>静态方法中不能使用 super 关键字。</p>
 <p>调用父类的方法语法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>.方法名(参数列表);</span><br></pre></td></tr></table></figure>
@@ -432,13 +464,13 @@
 <p>在继承关系中，在调用函数（方法）或者类中的成员变量时，JVM（JAVA虚拟机）会先检测当前的类（也就是子类）是否含有该函数或者成员变量，如果有，就执行子类中的，如果没有才会执行父类中的。如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Start</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Cat cat=<span class="keyword">new</span> Cat(<span class="string">"Jack"</span>,<span class="string">"黑色"</span>);</span><br><span class="line">        cat.eat();</span><br><span class="line">        cat.run();</span><br><span class="line">        cat.sleep();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//必须要写这个构造函数，不然Cat类的代码会出错</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在吃"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在奔跑"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">"正在睡觉"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">(String name,String color)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.color=color;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(color+<span class="string">"的"</span>+name+<span class="string">"正在吃鱼"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">黑色的Jack正在吃鱼</span><br><span class="line">Jack正在奔跑</span><br><span class="line">Jack正在睡觉</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">黑色的<span class="keyword">Jack正在吃鱼</span></span><br><span class="line"><span class="keyword">Jack正在奔跑</span></span><br><span class="line"><span class="keyword">Jack正在睡觉</span></span><br></pre></td></tr></table></figure>
 <p>当子类出现与父类一样的函数时，这个被称为 <strong>重写</strong> 也叫 <strong>覆盖</strong></p>
 <hr>
 <h1 id="Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递"><a href="#Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递" class="headerlink" title=".Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递"></a>.Object类是所有类的直接父类或间接父类，也就是说是所有类的根父类，这个可以运用于参数的传递</h1><p>如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Start</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b=<span class="keyword">new</span> B();</span><br><span class="line">        C c=<span class="keyword">new</span> C();</span><br><span class="line">        D d=<span class="keyword">new</span> D();</span><br><span class="line">        speak(a);</span><br><span class="line">        speak(b);</span><br><span class="line">        speak(c);</span><br><span class="line">        speak(d);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// instanceof 关键字是用于比较类与类是否相同，相同返回true，不同返回false</span></span><br><span class="line"><span class="comment">//当你不清楚你需要的参数是什么类型的，可以用Object来代替，Object可以代替任何类</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> A)<span class="comment">//意思是：如果参数是 A 类，那么就执行一下语句</span></span><br><span class="line">        &#123;</span><br><span class="line">            A aobj=(A)obj;<span class="comment">//这里是向下转换，需要强制转换</span></span><br><span class="line">            aobj.axx();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> B)</span><br><span class="line">        &#123;</span><br><span class="line">            B bobj=(B)obj;</span><br><span class="line">            bobj.bxx();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> C)</span><br><span class="line">        &#123;</span><br><span class="line">            C cobj=(C)obj;</span><br><span class="line">            cobj.cxx();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里举了四个类，他们的函数都不同，但都是 Object 类的子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">axx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Good morning!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bxx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Holle!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is B"</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cxx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Look!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is C"</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dxx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Oh!Bad!"</span>);</span><br><span class="line">        System.out.println(<span class="string">"This is D"</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Good morning!</span><br><span class="line">This is A</span><br><span class="line">Holle!</span><br><span class="line">This is B</span><br><span class="line">Look!</span><br><span class="line">This is C</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Good</span> morning!</span><br><span class="line"><span class="type">This</span> <span class="keyword">is</span> <span class="type">A</span></span><br><span class="line"><span class="type">Holle!</span></span><br><span class="line"><span class="type">This</span> <span class="keyword">is</span> <span class="type">B</span></span><br><span class="line"><span class="type">Look!</span></span><br><span class="line"><span class="type">This</span> <span class="keyword">is</span> <span class="type">C</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="Java-转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。"><a href="#Java-转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。" class="headerlink" title=".Java 转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。"></a>.Java 转型问题其实并不复杂，只要记住一句话：父类引用指向子类对象。</h1><p>什么叫父类引用指向子类对象，且听我慢慢道来。</p>
 <p>从 2 个名词开始说起<strong>：向上转型(upcasting)</strong> 、<strong>向下转型(downcasting)</strong>。</p>
@@ -513,7 +545,7 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/JAVA/" rel="tag"># JAVA</a>
+            <a href="/blog/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
           
         </div>
       
@@ -559,6 +591,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -673,12 +709,14 @@
       
 
       
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="331" height="86" src="//music.163.com/outchain/player?type=2&id=535056564&auto=1&height=66"></iframe>
+
+      
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
           
         </div>
       
-
     </div>
   </aside>
   
@@ -814,6 +852,35 @@
 
   
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'IwhdDenLcTulwnHhx5ElC225-gzGzoHsz',
+    appKey: 'MQF88EnV2niYmvOGUjbELNuu',
+    placeholder: '但是，我拒绝~',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
 
 
   

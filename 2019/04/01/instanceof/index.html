@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="岛">
 <meta property="og:description" content="Java中instanceof关键字的理解java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。 用法：result = object instanceof class参数：Result：布尔类型。Object：必选项。任意对象表达式。Class：必选项。任意已定义的对">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-01T15:45:06.740Z">
+<meta property="og:updated_time" content="2020-01-21T07:52:26.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="instanceof">
 <meta name="twitter:description" content="Java中instanceof关键字的理解java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。 用法：result = object instanceof class参数：Result：布尔类型。Object：必选项。任意对象表达式。Class：必选项。任意已定义的对">
@@ -223,6 +223,8 @@
     
 
     
+      
+    
 
     <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
@@ -240,8 +242,10 @@
     
 
     
+      
+    
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
 
   </li>
         
@@ -257,8 +261,10 @@
     
 
     
+      
+    
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
 
   </li>
 
@@ -353,12 +359,24 @@
                 
               
 
-              <time title="创建时间：2019-04-01 23:43:58 / 修改时间：23:45:06" itemprop="dateCreated datePublished" datetime="2019-04-01T23:43:58+08:00">2019-04-01</time>
+              <time title="创建时间：2019-04-01 23:43:58" itemprop="dateCreated datePublished" datetime="2019-04-01T23:43:58+08:00">2019-04-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-21 15:52:26" itemprop="dateModified" datetime="2020-01-21T15:52:26+08:00">2020-01-21</time>
               
             
           </span>
@@ -367,6 +385,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2019/04/01/instanceof/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2019/04/01/instanceof/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -420,7 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/JAVA/" rel="tag"># JAVA</a>
+            <a href="/blog/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
           
         </div>
       
@@ -462,6 +493,10 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -576,12 +611,14 @@
       
 
       
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="331" height="86" src="//music.163.com/outchain/player?type=2&id=535056564&auto=1&height=66"></iframe>
+
+      
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
           
         </div>
       
-
     </div>
   </aside>
   
@@ -717,6 +754,35 @@
 
   
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'IwhdDenLcTulwnHhx5ElC225-gzGzoHsz',
+    appKey: 'MQF88EnV2niYmvOGUjbELNuu',
+    placeholder: '但是，我拒绝~',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
 
 
   
