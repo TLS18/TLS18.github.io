@@ -248,7 +248,7 @@
       
     
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span></a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">4</span></a>
 
   </li>
         
@@ -267,7 +267,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
 
   </li>
 
@@ -312,6 +312,180 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://t_ls.gitee.io/blog/2020/01/23/利用对象池实现角色的残影/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="T_LS">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2020/01/23/利用对象池实现角色的残影/" class="post-title-link" itemprop="url">利用对象池实现角色的残影</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-23 21:13:18 / 修改时间：22:56:13" itemprop="dateCreated datePublished" datetime="2020-01-23T21:13:18+08:00">2020-01-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/blog/2020/01/23/利用对象池实现角色的残影/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2020/01/23/利用对象池实现角色的残影/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h4><p>Michael大佬的视频是我看见的最好的Unity入门教程，附上视频地址：</p>
+<p>Unity教程:利用对象池设计制作Dash冲锋残影效果！<a href="https://www.bilibili.com/video/av83771678" target="_blank" rel="noopener">https://www.bilibili.com/video/av83771678</a></p>
+<h4 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h4><blockquote>
+<p>对象池模式管理一个可代替对象的集合。组件从池中借出对象，用它来完成一些任务并当任务完成时归还该对象。被归还的对象接着满足请求，不管是同一个组件还是其他组件的请求。对象池模式可以管理那些代表的现实资源或者通过重用来分摊昂贵初始化代价的对象。</p>
+<p>第二步操作就是借出。</p>
+<p>第三步操作是组件用借出的对象来完成一些任务。这时候并不需要对象池再做什么，但是这也意味着该对象将被租借一段时间并且不能在被其他组件借出。</p>
+<p>第四步操作就是归还，组件归还借出的对象这样可以继续满足其他的租借请求。</p>
+<p>在一个多线程的应用中，第二，第三，第四步操作都有可能发生并发操作。多线程的组件中分享对象导致了潜在的并发问题。也存在一种情况就是当所有对象都被借出时不能满足接下来的请求，对象池必须应对这些请求，不管是告诉组件已经没有对象可借还是允许<a href="https://baike.baidu.com/item/组件/6902128" target="_blank" rel="noopener">组件</a>等待直到有归还的对象。</p>
+<p><img src="/blog/2020/01/23/利用对象池实现角色的残影/image-20200123220938163.png" alt="image-20200123220938163"></p>
+<p>-百度百科</p>
+</blockquote>
+<p>对象池通过预先设定一组可以自定义的对象，当使用时将其从池中取出，此时判断取出的条件是否满足，如池子中是否有空闲的item，当池子空的时候的解决方案等。用完后归还给池中等待下一次取出，其优点就是能复用池中已经预先放好的对象，不会有分配内存和释放内存的开销。</p>
+<p>但其缺点也很明显，在并发环境下若多线程同时获取可能会产生同步问题或锁竞争（为了防止多个线程同时使用一个程序而造成的并发问题，将方法进行synchronized标识，表示只有其中一个线程能拿到锁执行该程序，而其他的线程需要等待且不断尝试获取锁，直到拿到锁执行程序为止，即多个线程进行锁的竞争）而造成巨大开销。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2020/01/23/利用对象池实现角色的残影/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1793,7 +1967,7 @@
                 
                   <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1814,7 +1988,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
