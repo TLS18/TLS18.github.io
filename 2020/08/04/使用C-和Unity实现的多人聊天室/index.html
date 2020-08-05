@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/m.ico?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/s.ico?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="unity,游戏开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用C#和Unity实现的多人聊天室(1)">
+<meta property="og:url" content="https://tls18.github.io/2020/08/04/使用C-和Unity实现的多人聊天室/index.html">
+<meta property="og:site_name" content="岛">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tls18.github.io/2020/08/04/使用C-和Unity实现的多人聊天室/GIF%202020-8-4%2016-19-32.gif">
+<meta property="og:image" content="https://tls18.github.io/2020/08/04/使用C-和Unity实现的多人聊天室/image-20200804214735151.png">
+<meta property="og:updated_time" content="2020-08-05T04:36:50.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用C#和Unity实现的多人聊天室(1)">
+<meta name="twitter:image" content="https://tls18.github.io/2020/08/04/使用C-和Unity实现的多人聊天室/GIF%202020-8-4%2016-19-32.gif">
+
+
+
+
+
+
+  <link rel="canonical" href="https://tls18.github.io/2020/08/04/使用C-和Unity实现的多人聊天室/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用C#和Unity实现的多人聊天室(1) | 岛</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">岛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">节选自《节选》</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/TLS18" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tls18.github.io/2020/08/04/使用C-和Unity实现的多人聊天室/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="T_LS">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用C#和Unity实现的多人聊天室(1)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-04 12:35:03" itemprop="dateCreated datePublished" datetime="2020-08-04T12:35:03+08:00">2020-08-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-05 12:36:50" itemprop="dateModified" datetime="2020-08-05T12:36:50+08:00">2020-08-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/08/04/使用C-和Unity实现的多人聊天室/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/04/使用C-和Unity实现的多人聊天室/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2020/08/04/使用C-和Unity实现的多人聊天室/GIF 2020-8-4 16-19-32.gif" alt="GIF 2020-8-4 16-19-32"></p>
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>网络是游戏开发的重要一环，许多Unity网络相关的项目都是基于Unet实现的，可以在引擎内通过组件的方式较轻松的实现网络功能，但现已被弃用，替代产品有:</p>
+<p>Mirror Networking:<a href="https://github.com/vis2k/Mirror" target="_blank" rel="noopener">https://github.com/vis2k/Mirror</a></p>
+<p>Phton:<a href="https://www.photonengine.com/" target="_blank" rel="noopener">https://www.photonengine.com/</a></p>
+<p>近期腾讯也和Unity合作推出了游戏联机服务的C# SDK: <a href="https://cloud.tencent.com/document/product/1038" target="_blank" rel="noopener">https://cloud.tencent.com/document/product/1038</a></p>
+<p>框架也有:</p>
+<p>服务端ComBlock:<a href="https://github.com/kbengine/kbengine" target="_blank" rel="noopener">https://github.com/kbengine/kbengine</a></p>
+<p>服务端Pomelo:<a href="https://github.com/NetEase/pomelo" target="_blank" rel="noopener">https://github.com/NetEase/pomelo</a></p>
+<p>双端ET:<a href="https://github.com/egametang/ET" target="_blank" rel="noopener">https://github.com/egametang/ET</a></p>
+<p>等。要想学习这部分的引擎，首先基础要打好，所以想到先从自己实现一个简单的客户端/服务端来了解多人游戏基本的工作流。项目服务端使用c#编写，数据库选用Mysql，客户端使用Unity引擎。</p>
+<p>参考书籍:</p>
+<p>《Unity3D网络游戏实战》-罗培羽<a href="https://luopeiyu.github.io/unity_net_book/" target="_blank" rel="noopener">https://luopeiyu.github.io/unity_net_book/</a></p>
+<h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><p>客户端:<a href="https://github.com/TLS18/Block-Client" target="_blank" rel="noopener">https://github.com/TLS18/Block-Client</a></p>
+<p>服务端:<a href="https://github.com/TLS18/Block-Server" target="_blank" rel="noopener">https://github.com/TLS18/Block-Server</a></p>
+<h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><p><img src="/2020/08/04/使用C-和Unity实现的多人聊天室/image-20200804214735151.png" alt="image-20200804214735151"></p>
+<p>实现了一个较为基础的服务端，市面上成熟的服务端架构要比这个复杂许多，例如增加分区分服，增加数据库访问代理，处理数据缓存等大量优化。下面分客户端和服务端两方面来记录学习历程</p>
+<h3 id="服务端部分"><a href="#服务端部分" class="headerlink" title="服务端部分"></a>服务端部分</h3><h4 id="DataMgr类"><a href="#DataMgr类" class="headerlink" title="DataMgr类"></a>DataMgr类</h4><p>该类用于连接数据库，封装了访问数据库的所有方法，通过Mysql提供的connector能在c#中访问修改数据库，在此之前需要先连接上数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class DataMgr</span><br><span class="line">&#123;</span><br><span class="line">    MySqlConnection sqlConn;</span><br><span class="line">    public bool Connect()</span><br><span class="line">        &#123;</span><br><span class="line">            string connStr = &quot;database=game;data source=&quot; + DBHost + &quot;;&quot;;</span><br><span class="line">            connStr += &quot;user=&quot; + user + &quot;;password=&quot; + pw + &quot;;port=&quot; + DBPort + &quot;;&quot;;</span><br><span class="line">            sqlConn = new MySqlConnection(connStr);</span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                sqlConn.Open();</span><br><span class="line">                Console.WriteLine(&quot;[数据库]连接成功&quot;);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception e)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(&quot;[数据库]连接失败&quot; + e.Message);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中一个判断角色是否能注册的方法（查询数据库内是否有某个id对应的记录）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private bool CanRegister(string id)</span><br><span class="line">&#123;</span><br><span class="line">    if (!IsSafeStr(id)) return false;</span><br><span class="line">    string cmdStr = string.Format(&quot;select * from user where id = &apos;&#123;0&#125;&apos;;&quot;, id);</span><br><span class="line">    MySqlCommand cmd = new MySqlCommand(cmdStr, sqlConn);</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        MySqlDataReader dataReader = cmd.ExecuteReader();</span><br><span class="line">        bool hasRows = dataReader.HasRows;</span><br><span class="line">        dataReader.Close();</span><br><span class="line">        return !hasRows;</span><br><span class="line">    &#125;</span><br><span class="line">    catch(Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;[DataMgr]查询用户失败&quot; + e.Message);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h5><p>需要注意的一点是要防止sql注入，简单来说就是服务端需要向数据库进行sql查询，一些场景下需要结合用户输入动态构建sql语句，例如上面这个方法要使用用户id来查询，此时用户就可以在id中加入非法语句来达到查询修改数据库的目的，所以在id上使用了一个简单的IsSafeStr()来判断输入是否符号要求，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool IsSafeStr(string str)</span><br><span class="line">&#123;</span><br><span class="line">	return !Regex.IsMatch(str, @&quot;[-|;|,|\/|\(|\)|\[|\]|\&#125;|\&#123;|%|@|\*|!|\&apos;]&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更多关于数据库及网络安全的知识还有待学习，记录一个用于渗透测试的平台留待研究，里面就有关于sql注入的部分</p>
+<p>DVWA:<a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">http://www.dvwa.co.uk/</a></p>
+<h4 id="ServMgr类"><a href="#ServMgr类" class="headerlink" title="ServMgr类"></a>ServMgr类</h4><p>该类负责管理所有客户端的连接，包括消息接收/分发、消息发送、维护连接状态等功能。在初始化时会建立一个Socket对象并开始异步监听是否有客户端连接，客户端连接成功后使用socket.BeginReceive()异步接收该连接的消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public void Start(string host,int post)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">    //Bind部分</span><br><span class="line">    IPAddress ipAdr = IPAddress.Parse(host);</span><br><span class="line">    IPEndPoint ipEp = new IPEndPoint(ipAdr, post);</span><br><span class="line">    listenfd.Bind(ipEp);</span><br><span class="line">    //Listen部分</span><br><span class="line">    listenfd.Listen(maxConn); //最多可容纳的接收数</span><br><span class="line">    //Accept部分</span><br><span class="line">    listenfd.BeginAccept(AcceptCb, null);//将回调函数做参</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">private void AcceptCb(IAsyncResult ar)</span><br><span class="line">&#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        Socket socket = listenfd.EndAccept(ar);</span><br><span class="line">        int index = NewIndex();</span><br><span class="line"></span><br><span class="line">        if(index &lt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            socket.Close();</span><br><span class="line">            Console.Write(&quot;[警告]连接已满&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            Conn conn = conns[index];</span><br><span class="line">            conn.Init(socket);</span><br><span class="line">            string adr = conn.GetAddr();</span><br><span class="line">            Console.WriteLine(&quot;客户端连接[&quot; + adr + &quot;]conn池ID：&quot; + index);</span><br><span class="line">            conn.socket.BeginReceive(conn.readBuff, conn.buffCount,conn.BuffRemain(), SocketFlags.None, ReceiveCb, conn);</span><br><span class="line">            listenfd.BeginAccept(AcceptCb, null);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch(Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;AcceptCb失败：&quot; + e.Message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void ReceiveCb(IAsyncResult ar)</span><br><span class="line">&#123;</span><br><span class="line">    处理接收到的消息</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当服务端接收到来自客户端的消息时，调用定义好的回调函数ReceiveCb，将消息根据种类分发给不同的类去执行，关于如何辨别消息的种类后面会有记录</p>
+<h5 id="TCP粘包分包"><a href="#TCP粘包分包" class="headerlink" title="TCP粘包分包"></a>TCP粘包分包</h5><p>这里需要注意的是，由于TCP协议的机制，如果遇到较小的数据包，会等待其他数据包到来一同发送，或者缓冲区有数据未取出，下次就会一口气取出多个包，数据接收端就无法判断这个包是否一同处理；相反如果遇到较大的数据包，会将其拆分发送。故以上两种情况会造成粘包分包问题，一种解决方法是在每个包的前面增加一个包长度，当接收端处理数据时，先根据缓冲区里数据量和给定包的长度进行判断，这样就能保证每次都能正确的取出数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">private void ProcessData(Conn conn)</span><br><span class="line">&#123;</span><br><span class="line">    if(conn.buffCount &lt; sizeof(Int32))</span><br><span class="line">    &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //获取消息长度</span><br><span class="line">    Array.Copy(conn.readBuff, conn.lenBytes, sizeof(Int32));</span><br><span class="line">    conn.msgLength = BitConverter.ToInt32(conn.lenBytes, 0);</span><br><span class="line">    //Console.WriteLine(&quot;收到长度[&quot; + conn.msgLength + &quot;]&quot;);</span><br><span class="line">    if (conn.buffCount &lt; conn.msgLength + sizeof(Int32))</span><br><span class="line">    &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    ProtocolBase protocol = proto.Decode(conn.readBuff, sizeof(Int32), conn.msgLength);</span><br><span class="line">    //消息分发给具体负责处理的类</span><br><span class="line">    HandleMsg(conn, protocol);</span><br><span class="line">    //清除掉已经处理的消息</span><br><span class="line">    int count = conn.buffCount - conn.msgLength - sizeof(Int32);</span><br><span class="line">    Array.Copy(conn.readBuff, sizeof(Int32) + conn.msgLength, conn.readBuff, 0, count);</span><br><span class="line">    conn.buffCount = count;</span><br><span class="line">    //如果缓冲区非空则继续处理</span><br><span class="line">    if (conn.buffCount &gt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        ProcessData(conn);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="心跳机制"><a href="#心跳机制" class="headerlink" title="心跳机制"></a>心跳机制</h5><p>当一个客户端出现问题，比如网络断线，客户端闪退等没有正常下线的场景，与客户端的连接就会变为死连接，即无法接收到客户端的消息且没有主动关闭。可以加入心跳机制解决问题，客户端定时给服务端发送心跳协议，一般5s左右发送一次，更新服务端的心跳时间，当心跳时间超过一定阀值时，判断连接失效，主动去断开与客户端的连接</p>
+<h5 id="消息分发"><a href="#消息分发" class="headerlink" title="消息分发"></a>消息分发</h5><p>对消息进行处理时，先根据其消息类型进行分发，然后由不同的类去执行，例如服务端收到了创建角色的消息，在HandlePlayerMsg中有这样一个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void MsgCreatePlayer(Player player,ProtocolBase protoBase)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ServMgr中可以这样访问，通过C#的反射，可以在程序运行期获取类型信息，这里使用MethodInfo可以获取到方法的名称参数返回值等等，接着构建一个数组保存要传入方法的参数，当类型不确定的时候可以使用Object类，接着就是使用MethodInfo.Invoke调用给定对象的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public HandlePlayerMsg handlePlayerMsg = new HandlePlayerMsg();</span><br><span class="line">//name=CreatePlayer</span><br><span class="line">string methodName = &quot;Msg&quot; + name;</span><br><span class="line">MethodInfo mm = handlePlayerMsg.GetType().GetMethod(methodName);</span><br><span class="line">if(mm == null)</span><br><span class="line">&#123;</span><br><span class="line">    string str = &quot;[警告]HandleMsg没有处理玩家方法&quot;;</span><br><span class="line">    Console.WriteLine(str + methodName);</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">Object[] obj = new object[] &#123; conn.player, protocolBase &#125;;</span><br><span class="line">if (name != &quot;UpdateInfo&quot;)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;[处理玩家信息] &quot; + conn.player.id + &quot; : &quot; + name);</span><br><span class="line">&#125;  </span><br><span class="line">mm.Invoke(handlePlayerMsg, obj);</span><br></pre></td></tr></table></figure>
+<h4 id="Player类"><a href="#Player类" class="headerlink" title="Player类"></a>Player类</h4><p>该类作为连接Conn类和管理ServMgr类的中间层，可以看作是服务器里每一个玩家的抽象，其包含成员</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//玩家id</span><br><span class="line">public string id;</span><br><span class="line">//玩家与服务器的连接</span><br><span class="line">public Conn conn;  </span><br><span class="line">//长期数据，比如玩家的等级，金币，段位</span><br><span class="line">public PlayerData data;</span><br><span class="line">//临时数据，比如玩家在某一局里的击杀数</span><br><span class="line">public PlayerTempData tempData;</span><br><span class="line"></span><br><span class="line">public Player(string id,Conn conn)</span><br><span class="line">&#123;</span><br><span class="line">this.id = id;</span><br><span class="line">this.conn = conn;</span><br><span class="line">tempData = new PlayerTempData();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Scene类"><a href="#Scene类" class="headerlink" title="Scene类"></a>Scene类</h4><p>该类用于管理服务器场景，在玩MMORPG的时候，经常会有地图或者副本的概念，一个副本就是一个场景，用户加载资料的时候，只需要专注于场景里的玩家，所以需要一个场景管理类来管理该场景里所有玩家的信息。本项目结构简单只有一个场景，如果需要多个场景可以建立Scene类的列表来实现。当有玩家进入场景时，该类需要做的就是创建ScenePlayer对象来表示其在场景中的状态，同时将同场景下的所有玩家的信息发送给该玩家，队伍或者房间也同理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ScenePlayer</span><br><span class="line">&#123;</span><br><span class="line">    public string id;</span><br><span class="line">    public float x = 0;</span><br><span class="line">    public float y = 0;</span><br><span class="line">    public float z = 0;</span><br><span class="line">    public float xScale = 0;</span><br><span class="line">    public int animInfo = 0;</span><br><span class="line">    public string name = &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="服务端与客户端的协议"><a href="#服务端与客户端的协议" class="headerlink" title="服务端与客户端的协议"></a>服务端与客户端的协议</h3><h4 id="字节流协议"><a href="#字节流协议" class="headerlink" title="字节流协议"></a>字节流协议</h4><p>在运行时服务端与客户端之间会发送不同类型的消息，要想方便的对不同消息类型进行处理，需要创建一个协议来规定两端之间通信的内容，网络通信的参与方必须遵守协议才能互相传输信息</p>
+<p>例如可以通过字符串协议，客户端向服务端发送一个字符串表示注册账号</p>
+<table>
+<thead>
+<tr>
+<th>消息长度（粘包分包处理）</th>
+<th>消息内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int(xxx)</td>
+<td>Register,userId,password</td>
+</tr>
+</tbody>
+</table>
+<p>字符串用逗号隔开，第一个表示方法名，后面的表示参数，这样传输到服务端后就会交由MsgRegister来对参数userId和password进行处理，但这样有一个漏洞，如果客户端发送了一段带有逗号的字符串会引发错误，所以书籍中采用了字节流协议的方法，将方法名和参数全部放进一个字节数组中，客户端和服务端依照约定好的顺序依次从数组中读取值。这种协议可以表示下面几种数据类型</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>占用字节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>8</td>
+</tr>
+<tr>
+<td>String</td>
+<td>↓</td>
+</tr>
+</tbody>
+</table>
+<p>字符串较特殊，为了保证其完整性，我们需要在其前面加上表示字符串字节长度的int型数据，例如</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>R</td>
+<td>e</td>
+<td>g</td>
+<td>i</td>
+<td>s</td>
+<td>t</td>
+<td>e</td>
+<td>r</td>
+</tr>
+</tbody>
+</table>
+<p>再将其放入字节数组中</p>
+<h4 id="Protocol类"><a href="#Protocol类" class="headerlink" title="Protocol类"></a>Protocol类</h4><h5 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h5><p>除了字节流协议，服务端还要能支持多种协议，定义一个基类，包含协议必须要支持的编码，解码，获取协议名称等功能（名称指的是登录协议，注册协议等）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class ProtocolBase</span><br><span class="line">&#123;</span><br><span class="line">    public virtual ProtocolBase Decode(byte[] readbuff, int start, int length)</span><br><span class="line">    &#123;</span><br><span class="line">    	return new ProtocolBase();</span><br><span class="line">    &#125;</span><br><span class="line">    public virtual byte[] Encode()</span><br><span class="line">    &#123;</span><br><span class="line">    	return new byte[] &#123; &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    public virtual string GetName()</span><br><span class="line">    &#123;</span><br><span class="line">    	return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public virtual string GetDesc()</span><br><span class="line">    &#123;</span><br><span class="line">    	return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="字节流类"><a href="#字节流类" class="headerlink" title="字节流类"></a>字节流类</h5><p>需要注意的是添加和获取字符串的方法，获取字符串里的参数end加上了ref关键字，表示该参数在方法内的改变会影响到原本的变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public void AddString(string str)</span><br><span class="line">&#123;</span><br><span class="line">    //将字符串根据UTF8编码转换成字节</span><br><span class="line">    byte[] strBytes = System.Text.Encoding.UTF8.GetBytes(str);</span><br><span class="line">    //获取字节长度</span><br><span class="line">    byte[] lenBytes = BitConverter.GetBytes(strBytes.Length);</span><br><span class="line">    //两者进行组合，加入到字节流协议的数组里面</span><br><span class="line">    if (bytes == null)</span><br><span class="line">    &#123;</span><br><span class="line">        bytes = lenBytes.Concat(strBytes).ToArray();</span><br><span class="line">    &#125;</span><br><span class="line">    else bytes = bytes.Concat(lenBytes).Concat(strBytes).ToArray();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public string GetString(int start,ref int end) //引用类型的参数,将方法内的变化带出外面</span><br><span class="line">&#123;</span><br><span class="line">    if((bytes == null)|| (bytes.Length &lt; start + sizeof(Int32)))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    //获取字符串的字节长度</span><br><span class="line">    Int32 strLen = BitConverter.ToInt32(bytes, start);</span><br><span class="line">    if (bytes.Length &lt; start + sizeof(Int32))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    //将字节转化为字符串</span><br><span class="line">    string str = System.Text.Encoding.UTF8.GetString(bytes, start + sizeof(Int32), strLen);</span><br><span class="line">    //更新</span><br><span class="line">    end = start + sizeof(Int32) + strLen;</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="构建字节流协议"><a href="#构建字节流协议" class="headerlink" title="构建字节流协议"></a>构建字节流协议</h4><p>发送端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ProtocolBytes protocol = new ProtocolBytes();</span><br><span class="line">protocol.AddString(&quot;Register&quot;);</span><br><span class="line">protocol.AddString(idInput.text);</span><br><span class="line">protocol.AddString(pwInput.text);</span><br><span class="line">Debug.Log(&quot;发送&quot; + protocol.GetDesc());</span><br><span class="line">//发送给服务端，回调函数为OnRegBack</span><br><span class="line">NetMgr.srvConn.Send(protocol, OnRegBack);</span><br></pre></td></tr></table></figure>
+<h4 id="使用字节流协议"><a href="#使用字节流协议" class="headerlink" title="使用字节流协议"></a>使用字节流协议</h4><p>接收端，由于ref关键字，每次读取完后start的位置会往后移动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public void MsgRegister(Conn conn, ProtocolBase protoBase)</span><br><span class="line">&#123;</span><br><span class="line">    int start = 0;</span><br><span class="line">    ProtocolBytes protocol = (ProtocolBytes)protoBase;</span><br><span class="line">    string protoName = protocol.GetString(start, ref start);</span><br><span class="line">    string id = protocol.GetString(start, ref start);</span><br><span class="line">    string pw = protocol.GetString(start, ref start);</span><br><span class="line">    string strFormat = &quot;[收到注册协议] &quot; + conn.GetAddr();</span><br><span class="line">    Console.WriteLine(strFormat + &quot; 用户名: &quot; + id + &quot; 密码: &quot; + pw);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/unity/" rel="tag"><i class="fa fa-tag"></i> unity</a>
+          
+            <a href="/tags/游戏开发/" rel="tag"><i class="fa fa-tag"></i> 游戏开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/02/《云之谷》/" rel="next" title="《云之谷》">
+                <i class="fa fa-chevron-left"></i> 《云之谷》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="T_LS">
+            
+              <p class="site-author-name" itemprop="name">T_LS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目地址"><span class="nav-number">2.</span> <span class="nav-text">项目地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整体架构"><span class="nav-number">3.</span> <span class="nav-text">整体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端部分"><span class="nav-number">4.</span> <span class="nav-text">服务端部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DataMgr类"><span class="nav-number">4.1.</span> <span class="nav-text">DataMgr类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sql注入"><span class="nav-number">4.1.1.</span> <span class="nav-text">sql注入</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ServMgr类"><span class="nav-number">4.2.</span> <span class="nav-text">ServMgr类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP粘包分包"><span class="nav-number">4.2.1.</span> <span class="nav-text">TCP粘包分包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#心跳机制"><span class="nav-number">4.2.2.</span> <span class="nav-text">心跳机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#消息分发"><span class="nav-number">4.2.3.</span> <span class="nav-text">消息分发</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Player类"><span class="nav-number">4.3.</span> <span class="nav-text">Player类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scene类"><span class="nav-number">4.4.</span> <span class="nav-text">Scene类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端与客户端的协议"><span class="nav-number">5.</span> <span class="nav-text">服务端与客户端的协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字节流协议"><span class="nav-number">5.1.</span> <span class="nav-text">字节流协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Protocol类"><span class="nav-number">5.2.</span> <span class="nav-text">Protocol类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基类"><span class="nav-number">5.2.1.</span> <span class="nav-text">基类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字节流类"><span class="nav-number">5.2.2.</span> <span class="nav-text">字节流类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建字节流协议"><span class="nav-number">5.3.</span> <span class="nav-text">构建字节流协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用字节流协议"><span class="nav-number">5.4.</span> <span class="nav-text">使用字节流协议</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="331" height="86" src="//music.163.com/outchain/player?type=2&id=535056564&auto=0&height=66"></iframe>
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">T_LS</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
+
+
+  
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'IwhdDenLcTulwnHhx5ElC225-gzGzoHsz',
+    appKey: 'MQF88EnV2niYmvOGUjbELNuu',
+    placeholder: '但是，我拒绝~',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
