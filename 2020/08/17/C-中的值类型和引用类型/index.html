@@ -103,25 +103,30 @@
 
 
 
-  <meta name="description" content="重写 参数列表必须完全与被重写方法的相同； 返回类型必须完全与被重写方法的返回类型相同； 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。 父类的成员方法只能被它的子类重写。 声明为final的方法不能被重写。 声明为static的方法不能被重写，但是能够被再次声明。 子类和父类在同一个包中，那么子">
-<meta name="keywords" content="JAVA">
+  <meta name="description" content="在学习Unity脚本开发的时候接触到了引用类型和值类型，记录一下自己的理解 栈和堆首先在项目内存分配中会使用到线程栈和堆，先对栈进行分析，当我们执行方法时，会将方法压栈，执行完毕后弹出，所占内存清空。栈有下面这些特性：  栈是内存自我管理的结构，压栈时自动分配内存，出栈时自动清空 栈中的内存不能动态请求，只能为大小确定的数据分配内存，灵活性不高，但栈的执行效率很高  栈的可用空间不大">
+<meta name="keywords" content="C#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重写重载">
-<meta property="og:url" content="https://tls18.github.io/2019/04/19/重写重载/index.html">
+<meta property="og:title" content="C#中的值类型和引用类型">
+<meta property="og:url" content="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/index.html">
 <meta property="og:site_name" content="岛">
-<meta property="og:description" content="重写 参数列表必须完全与被重写方法的相同； 返回类型必须完全与被重写方法的返回类型相同； 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。 父类的成员方法只能被它的子类重写。 声明为final的方法不能被重写。 声明为static的方法不能被重写，但是能够被再次声明。 子类和父类在同一个包中，那么子">
+<meta property="og:description" content="在学习Unity脚本开发的时候接触到了引用类型和值类型，记录一下自己的理解 栈和堆首先在项目内存分配中会使用到线程栈和堆，先对栈进行分析，当我们执行方法时，会将方法压栈，执行完毕后弹出，所占内存清空。栈有下面这些特性：  栈是内存自我管理的结构，压栈时自动分配内存，出栈时自动清空 栈中的内存不能动态请求，只能为大小确定的数据分配内存，灵活性不高，但栈的执行效率很高  栈的可用空间不大">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-18T16:30:31.776Z">
+<meta property="og:image" content="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/image-20200817172034276.png">
+<meta property="og:image" content="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/image-20200817172250524.png">
+<meta property="og:image" content="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/image-20200817172510381.png">
+<meta property="og:image" content="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/image-20200817173826622.png">
+<meta property="og:updated_time" content="2020-08-17T10:11:02.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重写重载">
-<meta name="twitter:description" content="重写 参数列表必须完全与被重写方法的相同； 返回类型必须完全与被重写方法的返回类型相同； 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。 父类的成员方法只能被它的子类重写。 声明为final的方法不能被重写。 声明为static的方法不能被重写，但是能够被再次声明。 子类和父类在同一个包中，那么子">
+<meta name="twitter:title" content="C#中的值类型和引用类型">
+<meta name="twitter:description" content="在学习Unity脚本开发的时候接触到了引用类型和值类型，记录一下自己的理解 栈和堆首先在项目内存分配中会使用到线程栈和堆，先对栈进行分析，当我们执行方法时，会将方法压栈，执行完毕后弹出，所占内存清空。栈有下面这些特性：  栈是内存自我管理的结构，压栈时自动分配内存，出栈时自动清空 栈中的内存不能动态请求，只能为大小确定的数据分配内存，灵活性不高，但栈的执行效率很高  栈的可用空间不大">
+<meta name="twitter:image" content="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/image-20200817172034276.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://tls18.github.io/2019/04/19/重写重载/">
+  <link rel="canonical" href="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/">
 
 
 
@@ -131,7 +136,7 @@
   };
 </script>
 
-  <title>重写重载 | 岛</title>
+  <title>C#中的值类型和引用类型 | 岛</title>
   
 
 
@@ -332,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tls18.github.io/2019/04/19/重写重载/">
+    <link itemprop="mainEntityOfPage" href="https://tls18.github.io/2020/08/17/C-中的值类型和引用类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="T_LS">
@@ -349,7 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">重写重载
+          <h1 class="post-title" itemprop="name headline">C#中的值类型和引用类型
 
               
             
@@ -375,7 +380,7 @@
                 
               
 
-              <time title="创建时间：2019-04-19 00:28:42 / 修改时间：00:30:31" itemprop="dateCreated datePublished" datetime="2019-04-19T00:28:42+08:00">2019-04-19</time>
+              <time title="创建时间：2020-08-17 16:34:59 / 修改时间：18:11:02" itemprop="dateCreated datePublished" datetime="2020-08-17T16:34:59+08:00">2020-08-17</time>
             
 
             
@@ -398,8 +403,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/19/重写重载/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/19/重写重载/" itemprop="commentCount"></span>
+                <a href="/2020/08/17/C-中的值类型和引用类型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/17/C-中的值类型和引用类型/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -427,63 +432,74 @@
       
 
       
-        <h1 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h1><ul>
-<li>参数列表必须完全与被重写方法的相同；</li>
-<li>返回类型必须完全与被重写方法的返回类型相同；</li>
-<li>访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。</li>
-<li>父类的成员方法只能被它的子类重写。</li>
-<li>声明为final的方法不能被重写。</li>
-<li>声明为static的方法不能被重写，但是能够被再次声明。</li>
-<li>子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。</li>
-<li>子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。</li>
-<li>重写的方法能够抛出任何非强制异常，无论被重写的方法是否抛出异常。但是，重写的方法不能抛出新的强制性异常，或者比被重写方法声明的更广泛的强制性异常，反之则可以。</li>
-<li>构造方法不能被重写。</li>
-<li>如果不能继承一个方法，则不能重写这个方法</li>
-</ul>
-<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。</p>
-<p>每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。</p>
-<p>最常用的地方就是构造器的重载。</p>
-<p><strong>重载规则:</strong></p>
+        <p>在学习Unity脚本开发的时候接触到了引用类型和值类型，记录一下自己的理解</p>
+<h4 id="栈和堆"><a href="#栈和堆" class="headerlink" title="栈和堆"></a>栈和堆</h4><p>首先在项目内存分配中会使用到线程栈和堆，先对栈进行分析，当我们执行方法时，会将方法压栈，执行完毕后弹出，所占内存清空。栈有下面这些特性：</p>
+<ol>
+<li>栈是内存自我管理的结构，压栈时自动分配内存，出栈时自动清空</li>
+<li><p>栈中的内存不能动态请求，只能为大小确定的数据分配内存，灵活性不高，但栈的执行效率很高</p>
+</li>
+<li><p>栈的可用空间不大</p>
+</li>
+</ol>
+<a id="more"></a>
+<p>接下来是堆，跟栈只能对一端数据进行操作不同，堆可以随意存取。在C#中堆可以用来存储实例对象，能存储大量数据且能动态分配存储空间，但其也有缺点：</p>
+<ol>
+<li>执行效率不如栈高</li>
+<li>不能自动回收使用过的对象</li>
+</ol>
+<p>所以这就带来了垃圾回收的问题，在C++编程中，经常被提醒说new了对象使用完后一定要记得delete，否则会造成内存溢出，就是由于堆上存储是程序员所申请的，也应由程序员进行清理，</p>
+<p>而.NET和java等提供了GC，可以自动回收堆中过期的对象</p>
+<h4 id="有哪些引用类型和值类型"><a href="#有哪些引用类型和值类型" class="headerlink" title="有哪些引用类型和值类型"></a>有哪些引用类型和值类型</h4><p>任何被称为“类”的都是引用类型，在C#一般可以使用3个关键字来声明一个自定义的引用类型</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Class</span>,<span class="keyword">Interface</span>,<span class="keyword">Delegate</span></span><br></pre></td></tr></table></figure>
+<p>C#中也有一些内建的引用类型</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dynamic</span>,<span class="keyword">Object</span>,<span class="keyword">String</span>(这里会有个误区，<span class="keyword">string</span>类型的值其实不是实际的字符串，而是对字符串的引用)</span><br></pre></td></tr></table></figure>
+<p>Unity中大部分类型都是引用类型，例如Component,Rigidbody</p>
+<p>而值类型大体可以分为结构和枚举两类，结构又可以大体分为</p>
+<ol>
+<li>数字型结构，如System.Int32,System.Float等</li>
+<li><p>布尔型结构，如System.Boolean等</p>
+</li>
+<li><p>用户自定义结构</p>
+</li>
+</ol>
+<p>Unity中常见的值类型有Vector2,Vector3,Color等</p>
+<h4 id="引用类型和值类型的区别"><a href="#引用类型和值类型的区别" class="headerlink" title="引用类型和值类型的区别"></a>引用类型和值类型的区别</h4><p><strong>引用类型</strong>的实例都会分配在托管堆上，new操作符会返回一个指向托管堆上该对象的内存地址，也就是说<strong>创建引用类型时，runtime会分配两个空间，一个分配在托管堆上，存储对象本身的数据，另一个分配在栈上，存储对堆上数据的引用</strong>。过程如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Myclass c;</span><br><span class="line">c = <span class="keyword">new</span> Myclass();</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/08/17/C-中的值类型和引用类型/image-20200817172034276.png" alt="image-20200817172034276"></p>
+<p>先在栈上分配一小块空间用于存储引用类型的值的地址，接着在托管堆中分配空间实际存储值，然后将地址返回并存储在栈上。</p>
+<p><img src="/2020/08/17/C-中的值类型和引用类型/image-20200817172250524.png" alt="image-20200817172250524"></p>
+<p>所以当我们执行下面这段代码创建一个新的类型d时，d指向同一个内存地址，也就是“引用”</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Myclass d;</span><br><span class="line">d = c;</span><br><span class="line">c.<span class="keyword">value</span>=<span class="number">10</span>  <span class="comment">//假设Myclass有成员变量value，默认值为5</span></span><br><span class="line">Console.WrithLine(d.<span class="keyword">value</span>)  <span class="comment">//输出10，由于引用的是堆中同一块内存空间</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/08/17/C-中的值类型和引用类型/image-20200817172510381.png" alt="image-20200817172510381"></p>
+<p>需要注意的是，如果托管堆上内存不够分配对象时，会进行垃圾回收，多次进行垃圾回收会导致程序性能下降。</p>
+<p>值类型创建时，runtime只会为其分配一个空间，分配在变量创建的地方</p>
 <ul>
-<li>被重载的方法必须改变参数列表(参数个数或类型不一样)；</li>
-<li>被重载的方法可以改变返回类型；</li>
-<li>被重载的方法可以改变访问修饰符；</li>
-<li>被重载的方法可以声明新的或更广的检查异常；</li>
-<li>方法能够在同一个类中或者在一个子类中被重载。</li>
-<li>无法以返回值类型作为重载函数的区分标准。</li>
+<li>如果值类型在方法内部创建，则跟随方法一起入栈，分配到栈上存储</li>
+<li>如果值类型是引用类型的成员变量，则跟随引用类型，存储在堆上</li>
 </ul>
-<hr>
-<h2 id="重写与重载之间的区别"><a href="#重写与重载之间的区别" class="headerlink" title="重写与重载之间的区别"></a>重写与重载之间的区别</h2><table>
-<thead>
-<tr>
-<th>区别点</th>
-<th>重载方法</th>
-<th>重写方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>参数列表</td>
-<td>必须修改</td>
-<td>一定不能修改</td>
-</tr>
-<tr>
-<td>返回类型</td>
-<td>可以修改</td>
-<td>一定不能修改</td>
-</tr>
-<tr>
-<td>异常</td>
-<td>可以修改</td>
-<td>可以减少或删除，一定不能抛出新的或者更广的异常</td>
-</tr>
-<tr>
-<td>访问</td>
-<td>可以修改</td>
-<td>一定不能做更严格的限制（可以降低限制）</td>
-</tr>
-</tbody>
-</table>
+<p>例如下面这一段代码</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line">i = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">int</span> j;</span><br><span class="line">j = i;</span><br></pre></td></tr></table></figure>
+<p>当int型变量声明时，不管是否赋值，编译器都会根据其类型为其分配内存空间，且这个内存空间里就存储着值本身，跟引用类型不同。所以下面进行的j=i赋值操作只是拷贝值类型的内容，两个变量是相互独立的，修改时不会相互影响</p>
+<p><img src="/2020/08/17/C-中的值类型和引用类型/image-20200817173826622.png" alt="image-20200817173826622"></p>
+<p>总结下来就是，值类型实例的值是自己本身，而引用类型的实例的值是一个引用，复制时一个是逐字段复制，另一个是内存地址的复制，所以我们队大对象赋值时避免使用值类型</p>
+<h4 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h4><p>前面提到，引用类型在使用多了以后会面临垃圾回收带来性能下降的风险，而值类型虽然轻量，但大量使用的话也会有损程序性能，这就是装箱和拆箱的问题</p>
+<p>装箱就是将值类型转化为引用类型，过程如下</p>
+<ol>
+<li>在托管堆中分配内存，分配的内存空间除了值类型各字段需要内存外，还要加上托管堆上所有对象都有的两个额外成员（类型对象指针，同步索引块）所需的内存</li>
+<li>将值类型的字段复制到新分配的堆内存中</li>
+<li>返回对象地址</li>
+</ol>
+<p>拆箱就是将已装箱的值类型实例转化为实类型</p>
+<ol>
+<li>获取已装箱实例中各字段的地址（这一步被称为拆箱！！！）</li>
+<li>将各个字段的值从托管堆复制到线程栈的新的值类型实例中</li>
+</ol>
+<p>所以拆箱并不是装箱的逆过程，拆箱的代价要小许多，需要注意的是编辑器需要在拆箱时知道需要将引用类型拆箱成什么类型，否则会抛出异常</p>
+<p>装箱和拆箱、复制会对程序的速度和内存空间产生不利影响，更甚者会由于频繁操作托管堆而增加GC的次数，所以在开发中需要注意编译器会在什么时候生成代码来自动进行装箱拆箱操作，并尝试手写这些代码，避免自动生成代码的情况。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>装箱和拆箱的学习也引出了对泛型概念的理解，泛型在C#2被提出，使得大量安全检查从运行时转移到了编译时进行，也可以减少装箱操作，在Unity常用的List\<t>也是对泛型很好的实践。接下来就需要花时间对泛型进行系统地学习</t></p>
+<p>《Unity 3D脚本编程:使用C#语言开发跨平台游戏》陈嘉栋</p>
+<p><a href="https://www.cnblogs.com/xiaodongy/p/7989711.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaodongy/p/7989711.html</a></p>
+<p><a href="https://www.cnblogs.com/woaixiaozhi/p/5116137.html" target="_blank" rel="noopener">https://www.cnblogs.com/woaixiaozhi/p/5116137.html</a></p>
 
       
     </div>
@@ -507,7 +523,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C#</a>
           
         </div>
       
@@ -520,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/19/继承/" rel="next" title="继承">
-                <i class="fa fa-chevron-left"></i> 继承
+              <a href="/2020/08/05/使用C-和Unity实现的多人聊天室2/" rel="next" title="使用C#和Unity实现的多人聊天室2">
+                <i class="fa fa-chevron-left"></i> 使用C#和Unity实现的多人聊天室2
               </a>
             
           </div>
@@ -529,10 +545,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/19/抽象/" rel="prev" title="抽象">
-                抽象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -670,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重写"><span class="nav-number">1.</span> <span class="nav-text">重写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载"><span class="nav-number">2.</span> <span class="nav-text">重载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重写与重载之间的区别"><span class="nav-number">2.1.</span> <span class="nav-text">重写与重载之间的区别</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#栈和堆"><span class="nav-number">1.</span> <span class="nav-text">栈和堆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有哪些引用类型和值类型"><span class="nav-number">2.</span> <span class="nav-text">有哪些引用类型和值类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型和值类型的区别"><span class="nav-number">3.</span> <span class="nav-text">引用类型和值类型的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#装箱和拆箱"><span class="nav-number">4.</span> <span class="nav-text">装箱和拆箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
