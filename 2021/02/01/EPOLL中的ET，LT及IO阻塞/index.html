@@ -103,22 +103,22 @@
 
 
 
-  <meta name="description" content="前言EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。 epollepoll主">
+  <meta name="description" content="前言EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。">
 <meta name="keywords" content="Linux,C++,计网">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EPOLL中的ET，LT及IO阻塞">
 <meta property="og:url" content="https://tls18.github.io/2021/02/01/EPOLL中的ET，LT及IO阻塞/index.html">
 <meta property="og:site_name" content="岛">
-<meta property="og:description" content="前言EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。 epollepoll主">
+<meta property="og:description" content="前言EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://tls18.github.io/2021/02/01/EPOLL中的ET，LT及IO阻塞/image-20210201161749592.png">
 <meta property="og:image" content="https://tls18.github.io/2021/02/01/EPOLL中的ET，LT及IO阻塞/image-20210201163137531.png">
 <meta property="og:image" content="https://tls18.github.io/2021/02/01/EPOLL中的ET，LT及IO阻塞/image-20210201164422364.png">
 <meta property="og:image" content="https://tls18.github.io/2021/02/01/EPOLL中的ET，LT及IO阻塞/image-20210201165414844.png">
-<meta property="og:updated_time" content="2021-02-01T08:54:43.916Z">
+<meta property="og:updated_time" content="2021-02-01T09:01:16.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EPOLL中的ET，LT及IO阻塞">
-<meta name="twitter:description" content="前言EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。 epollepoll主">
+<meta name="twitter:description" content="前言EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。">
 <meta name="twitter:image" content="https://tls18.github.io/2021/02/01/EPOLL中的ET，LT及IO阻塞/image-20210201161749592.png">
 
 
@@ -380,7 +380,7 @@
                 
               
 
-              <time title="创建时间：2021-02-01 16:11:42 / 修改时间：16:54:43" itemprop="dateCreated datePublished" datetime="2021-02-01T16:11:42+08:00">2021-02-01</time>
+              <time title="创建时间：2021-02-01 16:11:42 / 修改时间：17:01:16" itemprop="dateCreated datePublished" datetime="2021-02-01T16:11:42+08:00">2021-02-01</time>
             
 
             
@@ -433,6 +433,7 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>EPOLL是LINUX独有的I/O复用函数。其将用户关心的文件描述符(fd)上的事件放在内核里的一个事件表中。Select和Poll会在每次调用的时候线性扫描全部的Socket集合，而Epoll是通过向内核去注册回调事件的方式，只有活跃的socket才会主动的调用callback函数，如果不是所有socket都活跃的情况下，效率相较于select/poll有很大的提升。</p>
+<a id="more"></a>
 <h3 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h3><p>epoll主要为事件驱动，有三个主要的系统调用：</p>
 <ul>
 <li>epoll_create： 创建一个epoll句柄，占用一个fd</li>
